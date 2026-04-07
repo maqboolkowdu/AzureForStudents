@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azure for Students – Free Services Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f8fb;
+    color: #1a1a1a;
+    font-size: 13px;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 32px 36px 40px;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid #1F5C8B;
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+  }
+  .doc-header .org {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .doc-header .org strong {
+    display: block;
+    font-size: 13px;
+    color: #1F5C8B;
+    font-weight: 700;
+  }
+  .badge {
+    background: #1F5C8B;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .badge span { display: block; font-size: 9px; opacity: 0.8; font-weight: 400; }
+
+  /* ── TITLE BLOCK ── */
+  .title-block {
+    background: linear-gradient(135deg, #1F5C8B 0%, #2E75B6 100%);
+    color: #fff;
+    padding: 22px 28px;
+    margin: 18px 0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .title-block .azure-logo {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+  .title-block h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+  .title-block p {
+    font-size: 12px;
+    opacity: 0.85;
+    margin-top: 5px;
+    line-height: 1.5;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #fff;
+    background: #1F5C8B;
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 3px;
+    margin: 20px 0 12px;
+  }
+  .section-label.always { background: #217346; }
+
+  .section-note {
+    font-size: 11.5px;
+    color: #555;
+    margin-bottom: 14px;
+    padding: 8px 14px;
+    background: #EAF3FB;
+    border-left: 3px solid #2E75B6;
+    border-radius: 0 4px 4px 0;
+  }
+  .section-note.always {
+    background: #EAF6EE;
+    border-left-color: #217346;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* ── SERVICE CARD ── */
+  .card {
+    border: 1px solid #D0E4F0;
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: #2E75B6;
+  }
+  .card.always::before { background: #217346; }
+
+  .card-tag {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #2E75B6;
+    margin-bottom: 2px;
+  }
+  .card.always .card-tag { color: #217346; }
+
+  .card-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1F5C8B;
+    line-height: 1.3;
+  }
+  .card.always .card-name { color: #155D30; }
+
+  .card-alloc {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 3px 0 1px;
+    line-height: 1.2;
+  }
+
+  .card-detail {
+    font-size: 10.5px;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  .card-desc {
+    font-size: 10.5px;
+    color: #777;
+    margin-top: 4px;
+    line-height: 1.4;
+    border-top: 1px dashed #e0e0e0;
+    padding-top: 5px;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin: 18px 0 6px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: #444;
+  }
+  .legend-dot {
+    width: 14px;
+    height: 5px;
+    border-radius: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 28px;
+    padding-top: 12px;
+    border-top: 2px solid #1F5C8B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: #888;
+  }
+  .doc-footer strong { color: #1F5C8B; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; font-size: 11px; }
+    .page { padding: 16px 20px; max-width: 100%; }
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 7px; }
+    .card { padding: 9px 11px; }
+    .card-alloc { font-size: 12px; }
+    .title-block h1 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="org">
+      <strong>National University of Science and Technology</strong>
+      Information Technology Department &nbsp;|&nbsp; nu.edu.om &nbsp;|&nbsp; Muscat, Oman
+    </div>
+    <div class="badge">
+      Azure for Students
+      <span>Attachment — Executive Brief</span>
+    </div>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <!-- Azure SVG icon inline -->
+    <svg class="azure-logo" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="a" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#114A8B"/>
+          <stop offset="1" stop-color="#0669BC"/>
+        </linearGradient>
+        <linearGradient id="b" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#0000" stop-opacity=".3"/>
+          <stop offset="1" stop-color="#0000" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="c" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#198AB3"/>
+          <stop offset="1" stop-color="#1E9DE0"/>
+        </linearGradient>
+      </defs>
+      <path d="M33.338 6.544h26.038L31.65 89.456a4.15 4.15 0 0 1-3.933 2.8H8.149a4.15 4.15 0 0 1-3.928-5.5L29.405 9.344a4.15 4.15 0 0 1 3.933-2.8z" fill="url(#a)"/>
+      <path d="M63.763 60.776H32.051a1.911 1.911 0 0 0-1.302 3.304l20.35 18.976a4.172 4.172 0 0 0 2.837 1.2h17.773z" fill="#0078d4"/>
+      <path d="M33.338 6.544a4.12 4.12 0 0 0-3.94 2.852L4.252 86.7a4.14 4.14 0 0 0 3.908 5.556h20.108a4.44 4.44 0 0 0 3.4-2.87l4.857-14.318 17.363 16.2a4.24 4.24 0 0 0 2.666.975H71.97L63.71 60.776H37.63l16.44-48.463z" fill="url(#b)"/>
+      <path d="M66.595 9.344a4.145 4.145 0 0 0-3.928-2.8H33.648a4.145 4.145 0 0 1 3.928 2.8l25.184 77.412a4.15 4.15 0 0 1-3.928 5.5h29.019a4.15 4.15 0 0 0 3.928-5.5z" fill="url(#c)"/>
+    </svg>
+    <div>
+      <h1>Microsoft Azure for Students — Free Services</h1>
+      <p>Complete listing of cloud resources available to NUST students upon free activation using their @nu.edu.om institutional account. No credit card required.</p>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#2E75B6;"></div>
+      Services free for 12 months (new accounts)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#217346;"></div>
+      Always-free services (no expiry)
+    </div>
+  </div>
+
+  <!-- ─── 12-MONTH SERVICES ─── -->
+  <div class="section-label">🕐 Free for 12 Months — New Student Accounts</div>
+  <div class="section-note">
+    After signup, new students can use up to the specified monthly free amount of each service for <strong>12 months</strong> without being charged. Usage above limits is billed at pay-as-you-go rates.
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-tag">Compute</div>
+      <div class="card-name">Windows Virtual Machine</div>
+      <div class="card-alloc">750 hrs / month</div>
+      <div class="card-detail">B1s + B2ats v2 (AMD) burstable VMs</div>
+      <div class="card-desc">Run Windows Server environments, IIS web hosting, and lab simulations.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Compute</div>
+      <div class="card-name">Linux Virtual Machine</div>
+      <div class="card-alloc">750 hrs / month</div>
+      <div class="card-detail">B1s + B2ats v2 (AMD) burstable VMs</div>
+      <div class="card-desc">Run Ubuntu/CentOS servers, web apps, and networking labs.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Storage</div>
+      <div class="card-name">Azure Managed Disks</div>
+      <div class="card-alloc">64 GB × 2 SSD</div>
+      <div class="card-detail">P6 SSDs + 1 GB snapshot + 2M I/O ops</div>
+      <div class="card-desc">High-performance block storage attached to Azure VMs.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Storage</div>
+      <div class="card-name">Azure Blob Storage</div>
+      <div class="card-alloc">5 GB</div>
+      <div class="card-detail">LRS hot block — 20K reads + 10K writes</div>
+      <div class="card-desc">Store datasets, project files, images, and unstructured data.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Storage</div>
+      <div class="card-name">Azure Files</div>
+      <div class="card-alloc">100 GB</div>
+      <div class="card-detail">LRS — 2M read/list file operations</div>
+      <div class="card-desc">Shared cloud file storage accessible from any OS or device.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Storage</div>
+      <div class="card-name">Archive Storage</div>
+      <div class="card-alloc">10 GB LRS</div>
+      <div class="card-detail">10 GB write/retrieval + 100 reads</div>
+      <div class="card-desc">Long-term backup and archival of rarely accessed project data.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Security</div>
+      <div class="card-name">Key Vault</div>
+      <div class="card-alloc">10,000 transactions</div>
+      <div class="card-detail">RSA 2048-bit keys / secrets — Standard tier</div>
+      <div class="card-desc">Secure storage for API keys, passwords, and cryptographic keys.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Networking / Security</div>
+      <div class="card-name">VPN Gateway</div>
+      <div class="card-alloc">750 hours</div>
+      <div class="card-detail">VpnGw1 Gateway Type</div>
+      <div class="card-desc">Establish secure site-to-site or point-to-site VPN connections.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Networking</div>
+      <div class="card-name">Azure Load Balancer</div>
+      <div class="card-alloc">750 hrs + 15 GB</div>
+      <div class="card-detail">5 rules — Standard Load Balancer</div>
+      <div class="card-desc">Distribute traffic across VMs for high-availability application design.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Networking</div>
+      <div class="card-name">Bandwidth (Data Transfer)</div>
+      <div class="card-alloc">15 GB outbound</div>
+      <div class="card-detail">Outbound data across Azure global network</div>
+      <div class="card-desc">Data egress for deployed apps, APIs, and cloud experiments.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Databases</div>
+      <div class="card-name">Azure Database for MySQL</div>
+      <div class="card-alloc">750 hrs / month</div>
+      <div class="card-detail">Flexible Server B1MS — 32 GB storage + 32 GB backup</div>
+      <div class="card-desc">Managed relational database for web apps and data projects.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Databases</div>
+      <div class="card-name">Azure Database for PostgreSQL</div>
+      <div class="card-alloc">750 hrs / month</div>
+      <div class="card-detail">Flexible Server B1MS — 32 GB storage + 32 GB backup</div>
+      <div class="card-desc">Enterprise-grade open source database for scalable applications.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Databases</div>
+      <div class="card-name">Azure Cosmos DB</div>
+      <div class="card-alloc">400 RU/s + 25 GB</div>
+      <div class="card-detail">Provisioned throughput with multi-API support</div>
+      <div class="card-desc">NoSQL database for modern, globally distributed applications.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Databases</div>
+      <div class="card-name">Azure SQL Managed Instance</div>
+      <div class="card-alloc">750 vCore hrs / month</div>
+      <div class="card-detail">32 GB of storage included</div>
+      <div class="card-desc">Fully managed SQL Server instance for enterprise app migration labs.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Databases</div>
+      <div class="card-name">Service Bus</div>
+      <div class="card-alloc">750 hrs + 13M ops</div>
+      <div class="card-detail">Standard tier base unit</div>
+      <div class="card-desc">Enterprise messaging for decoupled microservice and IoT architectures.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Containers</div>
+      <div class="card-name">Container Registry</div>
+      <div class="card-alloc">1 Standard Registry</div>
+      <div class="card-detail">100 GB storage + 10 webhooks</div>
+      <div class="card-desc">Store and manage Docker container images for DevOps pipelines.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">AI / Foundry Tools</div>
+      <div class="card-name">AI Custom Vision</div>
+      <div class="card-alloc">5,000 transactions</div>
+      <div class="card-detail">Each of S1, S2, S3 tiers</div>
+      <div class="card-desc">Train and deploy custom image classification and object detection models.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">AI / Foundry Tools</div>
+      <div class="card-name">Azure Vision</div>
+      <div class="card-alloc">10,000 predictions</div>
+      <div class="card-detail">S0 — 1 training hr, 2 projects, 5K training images each</div>
+      <div class="card-desc">Computer vision APIs for image analysis and recognition projects.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">AI / Foundry Tools</div>
+      <div class="card-name">Face API</div>
+      <div class="card-alloc">30,000 transactions</div>
+      <div class="card-detail">S0 tier</div>
+      <div class="card-desc">Detect, identify, and analyze human faces in images for AI coursework.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">AI / Foundry Tools</div>
+      <div class="card-name">Azure Document Intelligence</div>
+      <div class="card-alloc">500 pages</div>
+      <div class="card-detail">S0 tier</div>
+      <div class="card-desc">Automate text, key-value, and table extraction from scanned documents.</div>
+    </div>
+
+  </div><!-- /grid 12mo -->
+
+  <!-- ─── ALWAYS-FREE SERVICES ─── -->
+  <div class="section-label always">✅ Always Free — No Expiry</div>
+  <div class="section-note always">
+    These services are available to <strong>all Azure accounts permanently</strong> — students can continue using them even after the 12-month period ends.
+  </div>
+
+  <div class="grid">
+
+    <div class="card always">
+      <div class="card-tag">Compute</div>
+      <div class="card-name">Azure App Service</div>
+      <div class="card-alloc">Up to 10 apps</div>
+      <div class="card-detail">1 GB storage + 1 hr compute/day</div>
+      <div class="card-desc">Host web apps, REST APIs, and mobile backends (Node.js, PHP, Python).</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Compute</div>
+      <div class="card-name">Azure Functions</div>
+      <div class="card-alloc">1,000,000 requests</div>
+      <div class="card-detail">Per month — Serverless Consumption Plan</div>
+      <div class="card-desc">Run event-driven code without managing servers or infrastructure.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Compute</div>
+      <div class="card-name">Azure Batch</div>
+      <div class="card-alloc">Free</div>
+      <div class="card-detail">Pay only for compute nodes used</div>
+      <div class="card-desc">Large-scale parallel and HPC job scheduling in the cloud.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Databases</div>
+      <div class="card-name">Azure SQL Database</div>
+      <div class="card-alloc">100,000 vCore sec</div>
+      <div class="card-detail">Serverless — 32 GB storage</div>
+      <div class="card-desc">Intelligent, fully managed SQL database with auto-scaling.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Databases</div>
+      <div class="card-name">Azure Data Factory</div>
+      <div class="card-alloc">5 low-freq activities</div>
+      <div class="card-detail">Per month</div>
+      <div class="card-desc">Build ETL/ELT data pipelines for data engineering projects.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Security + Identity</div>
+      <div class="card-name">Microsoft Entra ID</div>
+      <div class="card-alloc">50,000 objects</div>
+      <div class="card-detail">SSO to all cloud and on-premises web apps</div>
+      <div class="card-desc">Identity management, single sign-on, and access control for apps.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Security + Identity</div>
+      <div class="card-name">Security Center</div>
+      <div class="card-alloc">Free</div>
+      <div class="card-detail">Basic security posture management</div>
+      <div class="card-desc">Monitor and protect Azure resources from threats and misconfigurations.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Developer Tools</div>
+      <div class="card-name">Azure DevOps</div>
+      <div class="card-alloc">Unlimited</div>
+      <div class="card-detail">Private Git repos + CI/CD pipelines</div>
+      <div class="card-desc">Full DevOps toolkit: version control, build automation, and release pipelines.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Developer Tools</div>
+      <div class="card-name">DevTest Labs</div>
+      <div class="card-alloc">Free</div>
+      <div class="card-detail">Pay only for underlying compute/storage</div>
+      <div class="card-desc">Create reusable dev/test environments with policies and cost controls.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Developer Tools</div>
+      <div class="card-name">App Configuration</div>
+      <div class="card-alloc">1,000 req / day</div>
+      <div class="card-detail">10 MB storage</div>
+      <div class="card-desc">Centrally manage and store application configuration settings.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">IoT</div>
+      <div class="card-name">Microsoft IoT Hub</div>
+      <div class="card-alloc">8,000 msgs / day</div>
+      <div class="card-detail">0.5 KB message size — Free edition</div>
+      <div class="card-desc">Connect, monitor, and control IoT sensors and embedded devices.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">AI / Machine Learning</div>
+      <div class="card-name">Azure Machine Learning</div>
+      <div class="card-alloc">Free</div>
+      <div class="card-detail">Pay only for compute used during training</div>
+      <div class="card-desc">Build, train, and deploy ML models using Python, R, and AutoML.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">AI / Foundry IQ</div>
+      <div class="card-name">Azure AI Search</div>
+      <div class="card-alloc">50 MB storage</div>
+      <div class="card-detail">10,000 documents + 3 indexes</div>
+      <div class="card-desc">Add AI-powered full-text search to web and mobile applications.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">AI / Foundry Tools</div>
+      <div class="card-name">Face API (Free Tier)</div>
+      <div class="card-alloc">30,000 transactions</div>
+      <div class="card-detail">Free instance</div>
+      <div class="card-desc">Ongoing free tier for facial detection in AI and computer vision projects.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Networking</div>
+      <div class="card-name">Virtual Network</div>
+      <div class="card-alloc">50 VNets</div>
+      <div class="card-detail">Per subscription</div>
+      <div class="card-desc">Build isolated cloud networks, subnets, and routing for infrastructure labs.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Networking</div>
+      <div class="card-name">Bandwidth (Data Transfer)</div>
+      <div class="card-alloc">100 GB outbound</div>
+      <div class="card-detail">Per month — always free</div>
+      <div class="card-desc">Generous ongoing outbound data quota for deployed student projects.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Monitoring + Management</div>
+      <div class="card-name">Azure Advisor</div>
+      <div class="card-alloc">Unlimited</div>
+      <div class="card-detail">No restrictions</div>
+      <div class="card-desc">Get personalized best-practice recommendations for your Azure resources.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Monitoring + Management</div>
+      <div class="card-name">Azure Automation</div>
+      <div class="card-alloc">500 min job runtime</div>
+      <div class="card-detail">Per month</div>
+      <div class="card-desc">Automate cloud management tasks, patching, and runbook execution.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Integration</div>
+      <div class="card-name">Azure Logic Apps</div>
+      <div class="card-alloc">4,000 actions</div>
+      <div class="card-detail">Built-in actions — Consumption Plan</div>
+      <div class="card-desc">Build automated workflows integrating cloud services and on-premises systems.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Containers</div>
+      <div class="card-name">Service Fabric</div>
+      <div class="card-alloc">Free</div>
+      <div class="card-detail">Pay only for underlying infrastructure</div>
+      <div class="card-desc">Deploy and manage microservices and containerized applications at scale.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Mobile</div>
+      <div class="card-name">Notification Hubs</div>
+      <div class="card-alloc">1,000,000 pushes</div>
+      <div class="card-detail">Free namespace included</div>
+      <div class="card-desc">Send push notifications to iOS, Android, and Windows devices from any backend.</div>
+    </div>
+
+    <div class="card always">
+      <div class="card-tag">Data + Analytics</div>
+      <div class="card-name">Data Catalog</div>
+      <div class="card-alloc">Unlimited users</div>
+      <div class="card-detail">No user limit</div>
+      <div class="card-desc">Discover, understand, and consume enterprise data assets for analytics projects.</div>
+    </div>
+
+  </div><!-- /grid always -->
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div>
+      Attachment to: <strong>Azure for Students — Executive Brief</strong> &nbsp;|&nbsp; IT Department, NUST &nbsp;|&nbsp; April 2026
+    </div>
+    <div>
+      Source: Microsoft Azure Portal — Free Services Dashboard &nbsp;|&nbsp; <strong>azure.microsoft.com/free/students</strong>
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
