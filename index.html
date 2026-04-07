@@ -10,30 +10,75 @@
 /* ─── RESET & BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ── THEME TOKENS ── */
 :root {
   --azure:   #0078D4;
   --azure-l: #50E6FF;
   --azure-g: #00BCF2;
-  --dark:    #040C18;
-  --dark2:   #071526;
-  --dark3:   #0B2240;
-  --glass:   rgba(0,120,212,0.08);
-  --glass2:  rgba(80,230,255,0.06);
-  --white:   #FFFFFF;
-  --muted:   #8AABCC;
   --accent:  #F7C948;
   --green:   #00D084;
   --font-h:  'Outfit', sans-serif;
   --font-b:  'DM Sans', sans-serif;
   --font-m:  'DM Mono', monospace;
+  /* default = dark */
+  --bg:         #040C18;
+  --bg2:        #071526;
+  --bg3:        #0B2240;
+  --surface:    rgba(0,120,212,0.08);
+  --surface2:   rgba(80,230,255,0.06);
+  --fg:         #FFFFFF;
+  --muted:      #8AABCC;
+  --border:     rgba(80,230,255,0.12);
+  --border-h:   rgba(80,230,255,0.35);
+  --nav-bg:     rgba(4,12,24,0.75);
+  --td-color:   rgba(255,255,255,0.8);
+  --td-border:  rgba(255,255,255,0.05);
+  --td-hover:   rgba(0,120,212,0.07);
+  --td-hl:      rgba(0,120,212,0.12);
+  --pill-bg:    rgba(80,230,255,0.07);
+  --pill-bd:    rgba(80,230,255,0.18);
+  --pill-fg:    rgba(255,255,255,0.8);
+  --blob-op:    0.18;
+  --particle1:  #50E6FF;
+  --particle2:  #0078D4;
+  --particle-ln:rgba(0,120,212,0.08);
+  --s1-bg: radial-gradient(ellipse at 30% 50%, #071A3A 0%, #040C18 70%);
+  --transition-theme: background 0.45s ease, color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* ── LIGHT THEME — CHALKBOARD GREEN ── */
+html[data-theme="light"] {
+  --bg:         #2B4D38;
+  --bg2:        #1E3D2A;
+  --bg3:        #163020;
+  --surface:    rgba(255,255,255,0.06);
+  --surface2:   rgba(255,255,255,0.03);
+  --fg:         #EFF5E8;
+  --muted:      #9DC49A;
+  --border:     rgba(255,255,255,0.13);
+  --border-h:   rgba(255,255,255,0.32);
+  --nav-bg:     rgba(22,48,32,0.82);
+  --td-color:   #EFF5E8;
+  --td-border:  rgba(255,255,255,0.07);
+  --td-hover:   rgba(255,255,255,0.05);
+  --td-hl:      rgba(255,255,255,0.07);
+  --pill-bg:    rgba(255,255,255,0.07);
+  --pill-bd:    rgba(255,255,255,0.18);
+  --pill-fg:    #EFF5E8;
+  --blob-op:    0.20;
+  --particle1:  #A8D8A8;
+  --particle2:  #6DBF6D;
+  --particle-ln:rgba(100,200,100,0.07);
+  --s1-bg: radial-gradient(ellipse at 30% 50%, #1E4D2E 0%, #2B4D38 70%);
 }
 
 html, body {
   width: 100%; height: 100%;
   overflow: hidden;
-  background: var(--dark);
+  background: var(--bg);
   font-family: var(--font-b);
-  color: var(--white);
+  color: var(--fg);
+  transition: var(--transition-theme);
 }
 
 /* ─── CANVAS BG PARTICLES ─── */
@@ -95,7 +140,7 @@ html, body {
   position: absolute;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.18;
+  opacity: var(--blob-op);
   pointer-events: none;
 }
 .blob-blue  { background: #0078D4; }
@@ -123,8 +168,8 @@ html, body {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(4,12,24,0.7);
-  border: 1px solid rgba(80,230,255,0.15);
+  background: var(--nav-bg);
+  border: 1px solid var(--border);
   border-radius: 40px;
   padding: 10px 20px;
   backdrop-filter: blur(16px);
@@ -132,7 +177,7 @@ html, body {
 .nav-btn {
   width: 38px; height: 38px;
   border-radius: 50%;
-  border: 1px solid rgba(80,230,255,0.3);
+  border: 1px solid var(--border-h);
   background: transparent;
   color: var(--azure-l);
   font-size: 16px;
@@ -141,12 +186,12 @@ html, body {
   transition: all 0.2s;
 }
 .nav-btn:hover { background: var(--azure); border-color: var(--azure); color: #fff; transform: scale(1.1); }
-#slide-counter { font-family: var(--font-m); font-size: 12px; color: var(--muted); min-width: 50px; text-align: center; }
+#slide-counter { font-family: var(--font-m); font-size: 12px; color: var(--muted); min-width: 50px; text-align: center; transition: var(--transition-theme); }
 .dot-nav { display: flex; gap: 6px; align-items: center; }
 .dot {
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: rgba(80,230,255,0.25);
+  background: var(--border-h);
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -163,7 +208,7 @@ html, body {
   opacity: 0.6;
 }
 #logo-mark svg { width: 28px; height: 28px; }
-#logo-mark span { font-family: var(--font-m); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+#logo-mark span { font-family: var(--font-m); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; transition: color 0.45s; }
 #slide-title-bar {
   position: fixed; top: 24px; right: 32px;
   z-index: 100;
@@ -181,22 +226,22 @@ html, body {
 .t-h1 { font-family: var(--font-h); font-size: clamp(42px,6vw,72px); font-weight: 900; line-height: 1.0; }
 .t-h2 { font-family: var(--font-h); font-size: clamp(30px,4vw,52px); font-weight: 700; line-height: 1.1; }
 .t-h3 { font-family: var(--font-h); font-size: clamp(20px,2.5vw,28px); font-weight: 600; }
-.t-body { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.75); }
-.t-small { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.t-body { font-size: 16px; line-height: 1.7; color: var(--td-color); }
+.t-small { font-size: 13px; color: var(--muted); line-height: 1.6; transition: color 0.45s; }
 .t-azure { color: var(--azure-l); }
 .t-accent { color: var(--accent); }
 .t-green { color: var(--green); }
 
 /* ─── GLASS CARDS ─── */
 .card {
-  background: var(--glass);
-  border: 1px solid rgba(80,230,255,0.12);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 22px 26px;
   backdrop-filter: blur(12px);
-  transition: border-color 0.3s, transform 0.3s;
+  transition: border-color 0.3s, transform 0.3s, background 0.45s;
 }
-.card:hover { border-color: rgba(80,230,255,0.35); transform: translateY(-3px); }
+.card:hover { border-color: var(--border-h); transform: translateY(-3px); }
 .card-sm { padding: 14px 18px; border-radius: 12px; }
 
 /* ─── GRID HELPERS ─── */
@@ -224,9 +269,9 @@ html, body {
 .pill {
   padding: 4px 14px; border-radius: 20px;
   font-size: 13px;
-  background: rgba(80,230,255,0.07);
-  border: 1px solid rgba(80,230,255,0.18);
-  color: rgba(255,255,255,0.8);
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-bd);
+  color: var(--pill-fg);
 }
 
 /* ─── ICON CIRCLE ─── */
@@ -268,12 +313,12 @@ html, body {
 }
 .comp-table td {
   padding: 9px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  color: rgba(255,255,255,0.8);
+  border-bottom: 1px solid var(--td-border);
+  color: var(--td-color);
   vertical-align: middle;
 }
-.comp-table tr:hover td { background: rgba(0,120,212,0.07); }
-.comp-table .highlight td { background: rgba(0,120,212,0.12); }
+.comp-table tr:hover td { background: var(--td-hover); }
+.comp-table .highlight td { background: var(--td-hl); }
 .comp-table .highlight td:first-child { border-left: 3px solid var(--azure); }
 .yes { color: var(--green); font-weight: 600; }
 .no  { color: rgba(255,100,100,0.7); }
@@ -305,7 +350,7 @@ html, body {
 .check-icon { color: var(--green); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
 
 /* ─── SLIDE 1 — TITLE ─── */
-#s1 { background: radial-gradient(ellipse at 30% 50%, #071A3A 0%, #040C18 70%); }
+#s1 { background: var(--s1-bg); }
 #s1 .title-wrap { text-align: center; max-width: 900px; position: relative; z-index: 2; }
 .azure-ring {
   position: absolute;
@@ -337,7 +382,7 @@ html, body {
 
 /* ─── PROJECT CARDS ─── */
 .proj-card {
-  background: var(--glass);
+  background: var(--surface);
   border: 1px solid rgba(80,230,255,0.12);
   border-radius: 14px;
   padding: 16px;
@@ -369,6 +414,189 @@ html, body {
   .grid-3 { grid-template-columns: repeat(2,1fr); }
   .grid-4 { grid-template-columns: repeat(2,1fr); }
 }
+
+/* ─── THEME TOGGLE BUTTON ─── */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 140px;
+  z-index: 200;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+#theme-toggle:hover {
+  border-color: var(--border-h);
+  transform: scale(1.15) rotate(20deg);
+  box-shadow: 0 4px 20px rgba(0,120,212,0.3);
+}
+
+/* Chalkboard mode global overrides */
+html[data-theme="light"] body { background: var(--bg); color: var(--fg); }
+html[data-theme="light"] .slide { color: var(--fg); }
+html[data-theme="light"] .t-body { color: var(--td-color); }
+html[data-theme="light"] .t-small { color: var(--muted); }
+html[data-theme="light"] .t-h1,
+html[data-theme="light"] .t-h2,
+html[data-theme="light"] .t-h3 { color: var(--fg); }
+html[data-theme="light"] #logo-mark { opacity: 0.75; }
+html[data-theme="light"] #slide-title-bar { color: var(--muted); }
+html[data-theme="light"] #slide-counter { color: var(--muted); }
+
+/* Chalkboard cards */
+html[data-theme="light"] .card {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.13);
+}
+html[data-theme="light"] .card:hover { border-color: rgba(255,255,255,0.30); }
+html[data-theme="light"] .proj-card {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+}
+html[data-theme="light"] .proj-card:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(180,230,160,0.4);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* Chalkboard table */
+html[data-theme="light"] .comp-table td { color: var(--td-color); }
+html[data-theme="light"] .comp-table th {
+  background: rgba(0,0,0,0.25);
+  color: #B8E0B0;
+}
+html[data-theme="light"] .comp-table tr:hover td { background: rgba(255,255,255,0.05); }
+html[data-theme="light"] .comp-table .highlight td { background: rgba(255,255,255,0.07); }
+html[data-theme="light"] .comp-table .highlight td:first-child { border-left: 3px solid #A8D8A8; }
+
+/* Chalkboard resource items */
+html[data-theme="light"] .res-item {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.14);
+}
+html[data-theme="light"] .res-val  { color: #C8F0B0; }
+html[data-theme="light"] .res-name { color: var(--muted); }
+
+/* Chalkboard stats & accents */
+html[data-theme="light"] .big-stat    { color: #C8F0B0; }
+html[data-theme="light"] .big-stat-sm { color: #C8F0B0; }
+html[data-theme="light"] .tl-title    { color: #C8F0B0; }
+html[data-theme="light"] .tl-dot {
+  background: #4A8A5A;
+  border-color: #A8D8A8;
+  box-shadow: 0 0 12px rgba(100,180,100,0.4);
+}
+html[data-theme="light"] .step-num { background: #4A8A5A; }
+
+/* Chalkboard dots */
+html[data-theme="light"] .dot { background: rgba(255,255,255,0.2); }
+html[data-theme="light"] .dot.active {
+  background: #A8D8A8;
+  box-shadow: 0 0 8px #A8D8A8;
+}
+
+/* Chalkboard project cards */
+html[data-theme="light"] .proj-num   { color: rgba(255,255,255,0.12); }
+html[data-theme="light"] .proj-title { color: #C8F0B0; }
+html[data-theme="light"] .proj-tech  { color: #9DC49A; }
+html[data-theme="light"] .proj-desc  { color: rgba(239,245,232,0.75); }
+
+/* Chalkboard progress bar */
+html[data-theme="light"] #progress-bar {
+  background: linear-gradient(90deg, #4A9A5A, #A8D8A8);
+  box-shadow: 0 0 10px rgba(100,200,100,0.5);
+}
+
+/* Chalkboard badges */
+html[data-theme="light"] .badge {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.20);
+  color: #C8F0B0;
+}
+html[data-theme="light"] .badge-green {
+  background: rgba(100,200,100,0.15);
+  border-color: rgba(100,200,100,0.35);
+  color: #A8E0A8;
+}
+html[data-theme="light"] .badge-accent {
+  background: rgba(247,201,72,0.15);
+  border-color: rgba(247,201,72,0.35);
+  color: #F7E08A;
+}
+
+/* Chalkboard pills */
+html[data-theme="light"] .pill {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.16);
+  color: #EFF5E8;
+}
+
+/* Chalkboard icon circle */
+html[data-theme="light"] .icon-circle {
+  background: rgba(100,160,100,0.2);
+  border-color: rgba(100,160,100,0.35);
+}
+
+/* Chalkboard title slide */
+html[data-theme="light"] #s1 { background: var(--s1-bg); }
+html[data-theme="light"] #s1 .t-h1 {
+  background: linear-gradient(135deg, #EFF5E8 30%, #A8D8A8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html[data-theme="light"] .azure-ring   { border-color: rgba(168,216,168,0.18); }
+html[data-theme="light"] .azure-ring-2 { border-color: rgba(168,216,168,0.08); }
+html[data-theme="light"] .azure-ring-3 { border-color: rgba(168,216,168,0.04); }
+html[data-theme="light"] .title-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(80,160,80,0.18) 0%, transparent 60%);
+}
+
+/* Chalkboard slides background */
+html[data-theme="light"] #s2, html[data-theme="light"] #s3,
+html[data-theme="light"] #s4, html[data-theme="light"] #s5,
+html[data-theme="light"] #s6, html[data-theme="light"] #s7,
+html[data-theme="light"] #s8, html[data-theme="light"] #s9,
+html[data-theme="light"] #s10,html[data-theme="light"] #s11,
+html[data-theme="light"] #s12 { background: var(--bg); }
+
+/* Chalkboard blobs — green tint */
+html[data-theme="light"] .blob-blue { background: #2A6A40; }
+html[data-theme="light"] .blob-cyan { background: #4A9A5A; }
+html[data-theme="light"] .blob-dark { background: #1A4A28; }
+
+/* Chalkboard misc */
+html[data-theme="light"] strong { color: inherit; }
+html[data-theme="light"] code {
+  background: rgba(0,0,0,0.25);
+  color: #C8F0B0;
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+html[data-theme="light"] .t-azure { color: #A8D8A8; }
+html[data-theme="light"] .yes { color: #90E890; }
+html[data-theme="light"] .no  { color: #FF9999; }
+html[data-theme="light"] .divider {
+  background: linear-gradient(90deg, #4A9A5A, #A8D8A8);
+}
+
+/* Chalkboard texture overlay */
+html[data-theme="light"] body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
 </style>
 </head>
 <body>
@@ -389,6 +617,12 @@ html, body {
   <span>NU · Azure for Students · 2026</span>
 </div>
 <div id="slide-title-bar"></div>
+
+<!-- Theme toggle -->
+<button id="theme-toggle" title="Toggle light / dark mode" aria-label="Toggle theme">
+  <span id="theme-icon">☀️</span>
+</button>
+
 
 <!-- Progress bar -->
 <div id="progress-bar" style="width:8.33%"></div>
@@ -944,6 +1178,7 @@ html, body {
 const canvas = document.getElementById('canvas-bg');
 const ctx = canvas.getContext('2d');
 let particles = [];
+let PARTICLE_DARK = true;
 
 function resize() {
   canvas.width = window.innerWidth;
@@ -969,6 +1204,7 @@ function drawParticles() {
   particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    p.color = PARTICLE_DARK ? p.colorDark : p.colorLight;
     ctx.fillStyle = p.color;
     ctx.globalAlpha = p.alpha;
     ctx.fill();
@@ -988,7 +1224,7 @@ function drawParticles() {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(0,120,212,${0.08 * (1 - dist/100)})`;
+        ctx.strokeStyle = PARTICLE_DARK ? `rgba(0,120,212,${0.08*(1-dist/100)})` : `rgba(0,80,180,${0.06*(1-dist/100)})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
@@ -1077,6 +1313,38 @@ document.addEventListener('touchend', e => {
 });
 
 updateUI();
+
+/* ─── THEME TOGGLE ─── */
+const themeBtn  = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const html      = document.documentElement;
+
+let isDark = true;
+
+// Respect saved preference
+const saved = localStorage.getItem('nu-azure-theme');
+if (saved === 'light') { applyLight(); }
+
+function applyDark() {
+  html.removeAttribute('data-theme');
+  themeIcon.textContent = '🖊️';
+  themeBtn.title = 'Switch to Chalkboard Mode';
+  isDark = true;
+  localStorage.setItem('nu-azure-theme', 'dark');
+  // Update particle colors
+  PARTICLE_DARK = true;
+}
+function applyLight() {
+  html.setAttribute('data-theme', 'light');
+  themeIcon.textContent = '🌙';
+  themeBtn.title = 'Switch to Dark Mode';
+  isDark = false;
+  localStorage.setItem('nu-azure-theme', 'light');
+  PARTICLE_DARK = false;
+}
+
+themeBtn.addEventListener('click', () => { if (isDark) applyLight(); else applyDark(); });
+
 </script>
 </body>
 </html>
