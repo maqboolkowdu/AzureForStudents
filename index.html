@@ -564,7 +564,8 @@ html[data-theme="light"] #s4, html[data-theme="light"] #s5,
 html[data-theme="light"] #s6, html[data-theme="light"] #s7,
 html[data-theme="light"] #s8, html[data-theme="light"] #s9,
 html[data-theme="light"] #s10,html[data-theme="light"] #s11,
-html[data-theme="light"] #s12 { background: var(--bg); }
+html[data-theme="light"] #s12,html[data-theme="light"] #s13,
+html[data-theme="light"] #s14 { background: var(--bg); }
 
 /* Chalkboard blobs — green tint */
 html[data-theme="light"] .blob-blue { background: #2A6A40; }
@@ -674,8 +675,266 @@ html[data-theme="light"] body::after {
   </div>
 </section>
 
-<!-- ─── SLIDE 2: CLOUD COMPUTING ─── -->
-<section class="slide" id="s2" data-title="What Is Cloud Computing?">
+<!-- ─── SLIDE 2: ON-PREMISES TIMELINE ─── -->
+<section class="slide" id="s2" data-title="On-Premises: What It Takes">
+  <div class="blob blob-dark" style="width:500px;height:500px;top:-120px;right:-80px;"></div>
+  <div class="blob blob-blue" style="width:300px;height:300px;bottom:-80px;left:0;opacity:0.12;"></div>
+  <div style="width:100%;max-width:1200px;">
+    <p class="t-eyebrow reveal">Reality Check — Before We Talk Cloud</p>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:4px;">
+      <h2 class="t-h2 reveal-1" style="font-size:clamp(22px,3vw,38px);">Deploying On-Premises: <span style="color:var(--accent);">Server Rack · BEMware · 3 Hosts · Storage · Backup</span></h2>
+      <div class="reveal-1" style="text-align:right;flex-shrink:0;">
+        <div style="font-family:var(--font-h);font-size:44px;font-weight:900;color:var(--accent);line-height:1;">4–7</div>
+        <div style="font-size:12px;color:var(--muted);">months minimum</div>
+      </div>
+    </div>
+    <div class="divider reveal-1"></div>
+
+    <!-- Horizontal timeline -->
+    <div class="reveal-2" style="position:relative;margin-top:18px;padding-bottom:8px;">
+      <!-- connector line -->
+      <div style="position:absolute;top:22px;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(247,201,72,0.6),rgba(247,201,72,0.2));z-index:0;"></div>
+      <div style="display:grid;grid-template-columns:repeat(9,1fr);gap:6px;position:relative;z-index:1;">
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">📋</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">Planning</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">Requirements &amp; design</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">2–4 wks</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">🛒</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">Procurement</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">RFQ · Tender · Approval</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">6–10 wks</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">🚚</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">Delivery</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">Shipping · Customs · Receiving</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">3–6 wks</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">🏗️</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">Rack &amp; DC</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">Power · Cooling · Cabling</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">1–2 wks</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">⚙️</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">BEMware</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">BEMS config · Licensing</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">1–2 wks</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">🖥️</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">3 Hosts</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">ESXi · vCenter · Cluster</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">1–2 wks</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">💾</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">Storage</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">SAN/NAS · Datastores · RAID</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">1–2 wks</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">🛡️</div>
+          <div style="background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.25);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">Backup</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">Veeam · Policies · Testing</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">1 wk</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(247,201,72,0.2);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">✅</div>
+          <div style="background:rgba(247,201,72,0.15);border:1px solid rgba(247,201,72,0.4);border-radius:8px;padding:7px 6px;text-align:center;width:100%;">
+            <div style="font-family:var(--font-h);font-size:10px;font-weight:700;color:var(--accent);">UAT &amp; Go-Live</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px;">Testing · Handover · Docs</div>
+            <div style="font-family:var(--font-m);font-size:10px;color:var(--accent);margin-top:4px;font-weight:700;">2–3 wks</div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /timeline -->
+
+    <!-- Cost/risk callouts -->
+    <div class="reveal-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;">
+      <div style="background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">💸</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:#FF9999;">Capital Expenditure</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Hardware cost paid upfront — OMR 30K–150K+</div>
+      </div>
+      <div style="background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">🔌</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:#FF9999;">Ongoing OpEx</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Power · cooling · maintenance contracts</div>
+      </div>
+      <div style="background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">👷</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:#FF9999;">Skilled Manpower</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Specialist engineers needed throughout</div>
+      </div>
+      <div style="background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">📉</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:#FF9999;">No Flexibility</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Scale requires new procurement cycle</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── SLIDE 3: CLOUD DEPLOYMENT TIMELINE ─── -->
+<section class="slide" id="s3" data-title="Cloud: Deployed in Days">
+  <div class="blob blob-blue" style="width:500px;height:500px;top:-100px;right:-80px;"></div>
+  <div class="blob blob-cyan" style="width:300px;height:300px;bottom:-60px;left:-60px;opacity:0.15;"></div>
+  <div style="width:100%;max-width:1200px;">
+    <p class="t-eyebrow reveal">The Cloud Alternative</p>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:4px;">
+      <h2 class="t-h2 reveal-1" style="font-size:clamp(22px,3vw,38px);">Same Infrastructure on Azure: <span class="t-azure">3 VMs · Managed Disks · Backup · Monitoring</span></h2>
+      <div class="reveal-1" style="text-align:right;flex-shrink:0;">
+        <div style="font-family:var(--font-h);font-size:44px;font-weight:900;color:var(--green);line-height:1;">&lt; 1</div>
+        <div style="font-size:12px;color:var(--muted);">week to production</div>
+      </div>
+    </div>
+    <div class="divider reveal-1"></div>
+
+    <!-- Cloud timeline — 3 columns: Day 1 / Day 2-3 / Day 4-5 -->
+    <div class="reveal-2" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px;">
+
+      <!-- DAY 1 -->
+      <div style="background:rgba(0,208,132,0.07);border:1px solid rgba(0,208,132,0.2);border-radius:14px;padding:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="background:var(--green);color:#040C18;font-family:var(--font-h);font-weight:900;font-size:11px;padding:4px 12px;border-radius:20px;">DAY 1</div>
+          <span style="font-size:11px;color:var(--muted);">Hours, not weeks</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,208,132,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">🔐</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Azure Account + Subscription</div><div style="font-size:10px;color:var(--muted);">Portal access · Resource Groups · RBAC roles</div><div style="font-family:var(--font-m);font-size:10px;color:var(--green);">⏱ 30 minutes</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,208,132,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">🖥️</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">3 Virtual Machines Provisioned</div><div style="font-size:10px;color:var(--muted);">VM size · OS image · admin credentials</div><div style="font-family:var(--font-m);font-size:10px;color:var(--green);">⏱ 10 min per VM</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,208,132,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">🌐</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Virtual Network + Subnets</div><div style="font-size:10px;color:var(--muted);">VNet · NSG rules · Private IPs · DNS</div><div style="font-family:var(--font-m);font-size:10px;color:var(--green);">⏱ 20 minutes</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,208,132,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">💾</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Managed Disks Attached</div><div style="font-size:10px;color:var(--muted);">Premium SSD · Disk encryption · Snapshots</div><div style="font-family:var(--font-m);font-size:10px;color:var(--green);">⏱ 5 min per disk</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 2-3 -->
+      <div style="background:rgba(0,120,212,0.07);border:1px solid rgba(0,120,212,0.2);border-radius:14px;padding:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="background:var(--azure);color:#fff;font-family:var(--font-h);font-weight:900;font-size:11px;padding:4px 12px;border-radius:20px;">DAY 2–3</div>
+          <span style="font-size:11px;color:var(--muted);">Configure &amp; secure</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,120,212,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">🛡️</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Azure Backup Configured</div><div style="font-size:10px;color:var(--muted);">Recovery Vault · Policies · Retention rules</div><div style="font-family:var(--font-m);font-size:10px;color:var(--azure-l);">⏱ 1 hour</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,120,212,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">📊</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Azure Monitor + Alerts</div><div style="font-size:10px;color:var(--muted);">CPU · memory · disk · email alerts</div><div style="font-family:var(--font-m);font-size:10px;color:var(--azure-l);">⏱ 1 hour</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,120,212,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">🔒</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Security Center Enabled</div><div style="font-size:10px;color:var(--muted);">Defender for Cloud · Vulnerability scan</div><div style="font-family:var(--font-m);font-size:10px;color:var(--azure-l);">⏱ 30 minutes</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,120,212,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">🔑</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Key Vault + Identity</div><div style="font-size:10px;color:var(--muted);">Secrets · Managed Identity · Entra ID SSO</div><div style="font-family:var(--font-m);font-size:10px;color:var(--azure-l);">⏱ 1 hour</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 4-5 -->
+      <div style="background:rgba(80,230,255,0.05);border:1px solid rgba(80,230,255,0.15);border-radius:14px;padding:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="background:var(--azure-l);color:#040C18;font-family:var(--font-h);font-weight:900;font-size:11px;padding:4px 12px;border-radius:20px;">DAY 4–5</div>
+          <span style="font-size:11px;color:var(--muted);">Test &amp; go live</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(80,230,255,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">🧪</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Connectivity &amp; Failover Tests</div><div style="font-size:10px;color:var(--muted);">VM-to-VM · internet · backup restore drill</div><div style="font-family:var(--font-m);font-size:10px;color:var(--azure-l);">⏱ Half day</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(80,230,255,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">📈</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Performance Baseline</div><div style="font-size:10px;color:var(--muted);">Load test · latency · IOPS validation</div><div style="font-family:var(--font-m);font-size:10px;color:var(--azure-l);">⏱ Half day</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(80,230,255,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">📄</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;">Documentation &amp; Handover</div><div style="font-size:10px;color:var(--muted);">Architecture diagram auto-exported from portal</div><div style="font-family:var(--font-m);font-size:10px;color:var(--azure-l);">⏱ 2 hours</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,208,132,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🚀</div>
+            <div><div style="font-family:var(--font-h);font-size:12px;font-weight:700;color:var(--green);">Production — GO LIVE</div><div style="font-size:10px;color:var(--muted);">Fully operational, monitored, backed up</div><div style="font-family:var(--font-m);font-size:10px;color:var(--green);">Day 5</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /3 cols -->
+
+    <!-- Bottom comparison bar -->
+    <div class="reveal-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;">
+      <div style="background:rgba(0,208,132,0.08);border:1px solid rgba(0,208,132,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">💳</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--green);">Pay As You Go</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">No upfront hardware cost — billed by the hour</div>
+      </div>
+      <div style="background:rgba(0,208,132,0.08);border:1px solid rgba(0,208,132,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">📐</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--green);">Scale in Minutes</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Resize VM or add storage with 2 clicks</div>
+      </div>
+      <div style="background:rgba(0,208,132,0.08);border:1px solid rgba(0,208,132,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">🌍</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--green);">99.9% SLA</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Microsoft-guaranteed uptime — no generator needed</div>
+      </div>
+      <div style="background:rgba(0,208,132,0.08);border:1px solid rgba(0,208,132,0.2);border-radius:10px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">🎓</div>
+        <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--green);">Student Access</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Free for NU students — $100 credit, zero paperwork</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── SLIDE 4: CLOUD COMPUTING ─── -->
+<section class="slide" id="s4" data-title="What Is Cloud Computing?">
   <div class="blob blob-dark" style="width:500px;height:500px;top:-100px;right:0;"></div>
   <div style="width:100%;max-width:1100px;">
     <p class="t-eyebrow reveal">Cloud Foundations</p>
@@ -730,7 +989,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 3: AZURE ─── -->
-<section class="slide" id="s3" data-title="Introducing Microsoft Azure">
+<section class="slide" id="s5" data-title="Introducing Microsoft Azure">
   <div class="blob blob-blue" style="width:400px;height:400px;bottom:-100px;left:0;"></div>
   <div style="width:100%;max-width:1100px;">
     <p class="t-eyebrow reveal">The Platform</p>
@@ -778,7 +1037,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 4: NU ELIGIBILITY ─── -->
-<section class="slide" id="s4" data-title="NU Tenant & Eligibility">
+<section class="slide" id="s6" data-title="NU Tenant & Eligibility">
   <div class="blob blob-cyan" style="width:350px;height:350px;top:-80px;right:50px;"></div>
   <div style="width:100%;max-width:1100px;">
     <p class="t-eyebrow reveal">Already Connected</p>
@@ -828,7 +1087,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 5: WHAT STUDENTS GET ─── -->
-<section class="slide" id="s5" data-title="What Students Get">
+<section class="slide" id="s7" data-title="What Students Get">
   <div class="blob blob-blue" style="width:450px;height:450px;top:-100px;right:-50px;"></div>
   <div style="width:100%;max-width:1200px;">
     <p class="t-eyebrow reveal">Student Subscription</p>
@@ -883,7 +1142,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 6: HOW TO ACTIVATE ─── -->
-<section class="slide" id="s6" data-title="How Students Activate">
+<section class="slide" id="s8" data-title="How Students Activate">
   <div class="blob blob-dark" style="width:500px;height:500px;top:-150px;left:-50px;"></div>
   <div style="width:100%;max-width:1000px;">
     <p class="t-eyebrow reveal">Activation Guide</p>
@@ -928,7 +1187,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 7: STUDENT BENEFITS ─── -->
-<section class="slide" id="s7" data-title="Student Benefits">
+<section class="slide" id="s9" data-title="Student Benefits">
   <div class="blob blob-blue" style="width:400px;height:400px;bottom:-80px;right:0;"></div>
   <div style="width:100%;max-width:1100px;">
     <p class="t-eyebrow reveal">Why It Matters</p>
@@ -966,7 +1225,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 8: FACULTY BENEFITS ─── -->
-<section class="slide" id="s8" data-title="Faculty Benefits">
+<section class="slide" id="s10" data-title="Faculty Benefits">
   <div class="blob blob-cyan" style="width:400px;height:400px;top:-80px;left:-80px;"></div>
   <div style="width:100%;max-width:1100px;">
     <p class="t-eyebrow reveal">For Educators</p>
@@ -1008,7 +1267,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 9: COMPARISON ─── -->
-<section class="slide" id="s9" data-title="Azure vs AWS vs Google Cloud">
+<section class="slide" id="s11" data-title="Azure vs AWS vs Google Cloud">
   <div class="blob blob-dark" style="width:500px;height:500px;bottom:-100px;right:-50px;"></div>
   <div style="width:100%;max-width:1100px;">
     <p class="t-eyebrow reveal">Platform Comparison</p>
@@ -1038,7 +1297,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 10: PROJECTS ─── -->
-<section class="slide" id="s10" data-title="6 Student Projects">
+<section class="slide" id="s12" data-title="6 Student Projects">
   <div class="blob blob-blue" style="width:350px;height:350px;top:-80px;right:0;"></div>
   <div style="width:100%;max-width:1200px;">
     <p class="t-eyebrow reveal">Real-World Applications</p>
@@ -1086,7 +1345,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 11: ROADMAP ─── -->
-<section class="slide" id="s11" data-title="Implementation Roadmap">
+<section class="slide" id="s13" data-title="Implementation Roadmap">
   <div class="blob blob-cyan" style="width:450px;height:450px;bottom:-100px;left:-80px;"></div>
   <div style="width:100%;max-width:1000px;">
     <p class="t-eyebrow reveal">Next Steps</p>
@@ -1135,7 +1394,7 @@ html[data-theme="light"] body::after {
 </section>
 
 <!-- ─── SLIDE 12: CLOSING ─── -->
-<section class="slide" id="s12" data-title="The Opportunity">
+<section class="slide" id="s14" data-title="The Opportunity">
   <div class="blob blob-blue" style="width:600px;height:600px;bottom:-150px;right:-100px;opacity:0.2;"></div>
   <div class="blob blob-cyan" style="width:300px;height:300px;top:-50px;left:-50px;opacity:0.12;"></div>
   <div style="text-align:center;max-width:900px;position:relative;z-index:2;">
